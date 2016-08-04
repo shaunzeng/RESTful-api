@@ -12,10 +12,10 @@ var getStatsHandler = require('../controllers/getStatsHandler');
 
 router.get('/',indexHandler);
 router.post('/measurements', mSaveHandler);
-router.get('/measurements:timestamp', mGetHandler);
+router.get('/measurements/:timestamp', mGetHandler);
 router.put('/measurements/:timestamp',mPutHandler);
 router.patch('/measurements/:timestamp', mPatchHandler);
 router.delete('/measurements/:timestamp', mDeleteHandler);
-router.get('/stats', getStatsHandler);
+router.get('/stats/:params', getStatsHandler);
 
 module.exports = router;
