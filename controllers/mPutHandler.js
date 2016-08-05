@@ -1,17 +1,13 @@
 var measurements = require('../models/measurements');
-
-function isISO(str){
-	var iso = /\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/ ;
-	return iso.test(str);
-}
+var common = require('../shared/common.shared');
 
 module.exports = function(req, res){
-	if (!isISO(req.params['timestamp'])){
+	if (!common.isISO(req.params['timestamp'])){
 		return res.status(400).send('invalid request');
 	}
 
 	if (req.params['timestamp'] != req.body['timestamp']){
-		return res.status(409).send('no macth');
+		return res.status(409).send('no match');
 	}
 
 	for (var p in req.body){
@@ -22,11 +18,11 @@ module.exports = function(req, res){
 		}
 	}
 
-	measurements.replace(req.params['timestamp'], req.body, function(result){
+	measurements.replace(req.body, function(result){
 		if (result){
 			return res.status(204).end();
 		} else {
-			return res.status(404).send('error');
+			return res.status(404).send('Not found');
 		}
 	});
 }

@@ -16,6 +16,6 @@ router.get('/measurements/:timestamp', mGetHandler);
 router.put('/measurements/:timestamp',mPutHandler);
 router.patch('/measurements/:timestamp', mPatchHandler);
 router.delete('/measurements/:timestamp', mDeleteHandler);
-router.get('/stats/:params', getStatsHandler);
+router.get('/stats', getStatsHandler);
 
 module.exports = router;

@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/api');
-var port = process.env.PORT || 3000;
 
 var app = express();
 
